@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Author <span id="a"></span></h1>
+    <h1>Title <span id="b"></span></h1>
+    <h4>Description <span id="c"></span></h4>
+  
+     
+    <script>
+        fetch("https://newsapi.org/v2/top-headlines?sources=ary-news&apiKey=cbbe7b17d5904cad9799ad189d70985f")
+        .then(response => response.json()) 
+        .then(data=>{
+            document.getElementById("a").innerHTML=data.articles[0].author;
+            document.getElementById("b").innerHTML=data.articles[0].title;
+            document.getElementById("c").innerHTML=data.articles[0].description;
+        }) 
+    </script>
+ 
+</body>
+</html>

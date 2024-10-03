@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text"  id="citydata">
+    <button type="button" id="clicks">Click me</button>
+    <h1>City: <span id="a"></span></h1>
+    <h1>Sunrise: <span id="b"></span></h1>
+    <h1>Sunset: <span id="c"></span></h1>
+    <h1>Temp: <span id="d"></span></h1>
+    <h1>ID: <span id="e"></span></h1>
+    <script>
+        document.getElementById("clicks").addEventListener("click",function(){
+            var city=document.getElementById("citydata").value;
+            fetch("https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=0515fa3a97c1dd00f5313a2d038a0a24")
+            .then(response=>response.json())
+            .then(data=>{
+                document.getElementById("a").innerHTML=data.name+" "+data.sys.country;
+                document.getElementById("b").innerHTML=(new Date((data.sys.sunrise)*1000)).toLocaleString();
+                document.getElementById("c").innerHTML=(new Date((data.sys.sunset)*1000)).toLocaleString();
+                document.getElementById("d").innerHTML=(new Date((data.sys.sunset)*1000)).toLocaleString();
+                document.getElementById("e").innerHTML=(data.weather[0].id);
+            })
+        })
+                                                                              
+    </script>
+</body>
+</html>

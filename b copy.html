@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <center>
+        <h1><b>Country Data</b></h1>
+    </center> 
+    <div class="input-group flex-nowrap">
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+            aria-describedby="addon-wrapping" id="countrydata">
+        <button id="clicks" type="button" class="btn btn-success">Get Data</button>
+    </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg g-4">
+        <div class="col">
+            <table class="table table-light">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">country</th>
+                        <th scope="col">data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>name</td>
+                        <td id="a"></td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>official</td>
+                        <td id="b"></td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>capital</td>
+                        <td id="c"></td>
+                    </tr>
+                </tbody>
+
+                <tbody>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>region</td>
+                        <td id="d"></td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>subregion</td>
+                        <td id="e"></td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>languages</td>
+                        <td id="f"></td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <th scope="row">7</th>
+                        <td>continents</td>
+                        <td id="g"></td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">8</th>
+                        <td>timezones</td>
+                        <td id="h"></td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">9</th>
+                        <td>signs</td>
+                        <td id="i"></td>
+                    </tr>
+                   
+                    <tr>
+                        <th scope="row">10</th>
+                        <td>fifa</td>
+                        <td id="j"></td>
+                    </tr>
+
+                    <tr> 
+                        <th scope="row">11</th>
+                        <td>area</td>
+                        <td id="k"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">12</th>
+                        <td>population</td>
+                        <td id="l"></td>
+                    </tr>
+                    <tr><th scope="row">13</th>
+                        <td>kor.official</td>
+                        <td id="m"></td>
+                    </tr>
+                    <tr><th scope="row">14</th>
+                        <td>tld</td>
+                        <td id="n"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">15</th>
+                        <td>CURRENCY NAME</td>
+                        <td id="o"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">16</th>
+                        <td>CURRENCY SYMBOL</td>
+                        <td id="p"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">17</th>
+                        <td>side</td>
+                        <td id="q"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">18</th>
+                        <td>start of week</td>
+                        <td id="r"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">19</th>
+                        <td>pol.official</td>
+                        <td id="s"></td>
+                    </tr>
+                    <tr><th scope="row">20</th>
+                        <td>status</td>
+                        <td id="t"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("clicks").addEventListener("click", function () {
+            var country = document.getElementById("countrydata").value;
+            fetch("https://restcountries.com/v3.1/name/" + country)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("a").innerHTML = data[0].name.common;
+                    document.getElementById("b").innerHTML = data[0].name.official;
+                    document.getElementById("c").innerHTML = data[0].capital[0];
+                    document.getElementById("d").innerHTML = data[0].region;
+                    document.getElementById("e").innerHTML = data[0].subregion;
+                    document.getElementById("f").innerHTML = data[0].languages[1+2];
+                    document.getElementById("g").innerHTML = data[0].continents[0];
+                    document.getElementById("h").innerHTML = data[0].timeszones[0];
+                    document.getElementById("i").innerHTML = data[0].car.signs;
+                    document.getElementById("j").innerHTML = data[0].fifa;
+                    document.getElementById("k").innerHTML = data[0].area;
+                    document.getElementById("l").innerHTML = data[0].population;
+                    document.getElementById("m").innerHTML = data[0].translations.ara.official;
+                    document.getElementById("n").innerHTML = data[0].official.common;
+                    document.getElementById("o").innerHTML = data[0].tld[0];
+                    document.getElementById("p").innerHTML = data[0].PKR.name;
+                    document.getElementById("q").innerHTML = data[0].signs.side;
+                    document.getElementById("r").innerHTML = data[0].startofweek;
+                    document.getElementById("s").innerHTML = data[0].pol.official;
+                    document.getElementById("t").innerHTML = data[0].status;
+
+                   
+                })
+        })
+    </script>
+</body>
+
+</html>
